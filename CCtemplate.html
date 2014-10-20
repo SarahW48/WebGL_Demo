@@ -1,0 +1,451 @@
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="cc.css">
+	<script type="text/javascript"
+	    src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript"
+	    src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
+  <script type="text/javascript" src="Three.js"></script>
+	<link rel="stylesheet" type="text/css"
+	    href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+</head>
+
+<body>
+	<div id="container">
+		<div id="metrics">
+			<img src="img/cclogo.png" id="sglogo">
+			
+			<div id="mainmetrics">
+				<h1 class="hinline" id="dollarsign">$ <span id="totalprice">7209</span></h1>
+				<h1 class="hinline" id="lbs"><span id="totalweight" >18717 </span>grams</h1>
+				<button type="button">Buy Now!</button>
+			</div>
+		</div>
+		<hr>
+		<div id="config">
+                       <p class="headerbar">Frame</p>
+                               <ul id="framelist" class="open">
+                                       <li><a id="frame_name">Orca Gold Electronic</a></li>
+                                       <li><a id="frame_price">$3999</a></li>
+                                       <li><a id="frame_weight">3000 grams</a></li>
+                               </ul>
+                       <p class="headerbar">Wheel</p>
+                               <ul id="wheellist" class="open">
+                                       <li ><a id="wheel_name">2012 Zipp 303 Firecrest Carbon Wheelset</a></li>
+                                       <li ><a id="wheel_price">$2700</a></li>
+                                       <li><a id="wheel_weight">1527 grams</a></li>
+                               </ul>
+                       <p class="headerbar">Handles</p>
+                               <ul id="handlelist" class="open">
+                                       <li><a id="handle_name">2012 3T Rotundo Team Handlebar</a></li>
+                                       <li><a id="handle_price">$300</a></li>
+                                       <li><a id="handle_weight">210 grams</a></li>
+                               </ul>
+                       <p class="headerbar">Pedals</p>
+                               <ul id="pedallist" class="open">
+                                       <li><a id="pedal_name">2012 Twenty6 Prerunner Cromo Pedal</a></li>
+                                       <li><a id="pedal_price">$210</a></li>
+                                       <li><a id="pedal_weight">303 grams</a></li>
+                               </ul>
+                       <p class="headerbar">Seat</p>
+                               <ul id="seatlist" class="open">
+                                       <li><a id="seat_name">Seat01</a></li>
+                                       <li><a id="seat_price">$210</a></li>
+                                       <li><a id="seat_weight">303 grams</a></li>
+                               </ul>
+		</div>
+ 
+
+		<div id="canvas">
+			<div id="canvasplace">
+			</div>
+		</div>
+		<div id="database">
+			<div id="menuimg1" onclick="partsMenuInit(this)">
+				<img src="img/wheel.png" class="topmenu">
+			</div>
+			<div id="menuimg2" onclick="partsMenuInit(this)">
+				<img src="img/frame.png" class="topmenu">
+			</div>
+			<div id="menuimg3" onclick="partsMenuInit(this)">
+				<img src="img/seat.png" class="topmenu">
+			</div>
+			<div id="menuimg4" onclick="partsMenuInit(this)">
+				<img src="img/gear.png" class="topmenu">
+			</div>
+			<div id="menuimg5" onclick="partsMenuInit(this)">
+				<img src="img/handle.png" class="topmenu">
+			</div>
+
+		</div>
+		<div id="submenu" style="display:none;">
+
+			<div id="scrollmenu">
+				<div id="horzscroll">
+			
+				</div>
+			</div>
+			
+		</div>
+	</div>
+<script>
+
+	var xmlpath="bike.xml"; 
+	var totalPrice,projector;
+	var parts=new Array(),partsOn=new Array(),partsId=new Array(),partsWeight=[3000,3000,15217,210,210,303],partsPrice=[100,3999,2700,100,300,210];
+	var partsName=new Array();
+	var WIDTH = document.documentElement.offsetWidth || 800,
+		HEIGHT = document.documentElement.clientHeight || 600;
+	var scene = new THREE.Scene();
+					scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
+	var VIEW_ANGLE = 40,
+		ASPECT = WIDTH / HEIGHT,
+		NEAR = 0.1,
+		FAR = 10000;
+	var camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+		scene.add(camera);
+	var	renderer = new THREE.WebGLRenderer();
+		renderer.setSize(WIDTH , HEIGHT);
+		document.getElementById("canvasplace").appendChild(renderer.domElement);
+      
+// 	var material = new THREE.MeshLambertMaterial({ color: 0xFFFF33, wireframe: false }),
+// 		frame;
+	var material,materials=new Array();
+     materials[1]= material = new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture("img/metal01.jpg")
+        });   
+     materials[2]= material = new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture("img/pattern01.jpg")
+        });   
+ 	
+     materials[3]= material = new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture("img/rubber01.jpg")
+        });   
+     materials[4]= material = new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture("img/plastic01.jpg")
+        });   
+     materials[5]= material = new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture("img/rubber01.jpg")
+        });   
+ 	
+ 	
+	
+	var light = new THREE.SpotLight();
+      light.position.set( 100, 60, -160 );
+      scene.add(light);	var loader = new THREE.JSONLoader(true);
+	var light2 = new THREE.SpotLight();
+      light2.position.set( -100, 60, -160 );
+      scene.add(light2);	var loader = new THREE.JSONLoader(true);
+      // enable shadows on the renderer
+      renderer.shadowMapEnabled = true;
+
+      // enable shadows for a light
+      light.castShadow = true;
+      //light2.castShadow = true;
+
+  var planeGeo = new THREE.PlaneGeometry(200, 100, 100, 10);
+  var planeMat = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+  var plane = new THREE.Mesh(planeGeo, planeMat);
+  plane.rotation.y = -Math.PI/2;
+  plane.position.y = -9;
+  plane.receiveShadow = true;
+  scene.add(plane);
+  
+  
+
+$(document).ready(function(){
+
+
+});
+
+
+function partsMenuInit(elem){
+var index=parseInt(elem.id[elem.id.length-1]);
+var html="",partsname;
+if (index==1)  partsname="wheelset";
+if (index==2)  partsname="frame";
+if (index==3)  partsname="saddle";
+if (index==4)  partsname="pedal";
+if (index==5)  partsname="handle";
+
+
+$("#submenu").slideUp();
+
+$.ajax({
+  url:xmlpath,
+  success: function(data) {
+   $(data).find(partsname).each(function(){
+   var id = $(this).attr('id');
+   var name = $(this).children('name').text();
+   var weight = $(this).children('weight').text();
+   var price = $(this).children('price').text();
+   var imgpath = $(this).children('imagepath').text();
+   html= html+"<div id='"+id+"' class='subtext'><ul><li>"+
+   					name
+   					+"</li><li>Actual Weight: <span>"
+   				+weight+"</span>g</li><li>$<span>"
+   				+price+"</span></li></ul><img src='"
+   				+imgpath+"' class='subimg'/></div>";
+   }); 
+    document.getElementById('horzscroll').innerHTML=html; 
+  }
+});
+      $("#database").css({"position":"relative","bottom":"12px","height":"4%"});
+	  $(".topmenu").css("height","30px");
+      $("#submenu").show("slow"); 
+
+}
+
+$('.subtext').live('click',
+
+function(){
+console.log('click');
+getPart($(this).attr('id'))
+}
+)
+
+function getPart(id){	
+	$.ajax({
+  		url:xmlpath,
+  		success: function(data) {
+   		var parttype=id.substring(0,(id.length-2));
+   				
+		if (parttype=="ws"){
+   		$(data).find('wheelset').each(function(){
+   			if($(this).attr('id')==id){
+   				var partLink = $(this).find('jsonpath').text();
+   				console.log(partLink);
+   				scene.remove(parts[1]);
+   				loadParts(partLink, 1 );  
+   				document.getElementById("wheel_name").innerHTML=$(this).find('name').text();  				  		
+   				document.getElementById("wheel_price").innerHTML="$"+$(this).find('price').text();  				  		
+   				document.getElementById("wheel_weight").innerHTML=$(this).find('weight').text()+" grams";  
+   				partsPrice[1]=	parseInt($(this).find('price').text());
+   				partsWeight[1]=	parseInt($(this).find('weight').text());
+   				$("#wheellist").effect("highlight", {color: 'red'}, 1200);
+   				sumup();
+				$("#totalprice").effect("highlight", {color: 'red'}, 1200);
+				$("#totalweight").effect("highlight", {color: 'red'}, 1200);   				
+   				
+   				
+   				
+   			}
+   		}); }
+   
+		if (parttype=="frame"){
+   		$(data).find('frame').each(function(){
+   			if($(this).attr('id')==id){
+   				var partLink = $(this).find('jsonpath').text();
+   				console.log(partLink);
+   				scene.remove(parts[2]);
+   				loadParts(partLink, 2 );  
+   				document.getElementById("frame_name").innerHTML=$(this).find('name').text();  				  		
+   				document.getElementById("frame_price").innerHTML="$"+$(this).find('price').text();  				  		
+   				document.getElementById("frame_weight").innerHTML=$(this).find('weight').text()+" grams";  				  		
+   				partsPrice[2]=	parseInt($(this).find('price').text());
+   				partsWeight[2]=	parseInt($(this).find('weight').text()); 
+				$("#framelist").effect("highlight", {color: 'red'}, 1200);
+				$("#totalprice").effect("highlight", {color: 'red'}, 1200);
+				$("#totalweight").effect("highlight", {color: 'red'}, 1200);
+   				sumup();				  		
+   				
+   			}
+   		}); }
+ 
+ 		if (parttype=="pedal"){
+   		$(data).find('pedal').each(function(){
+   			if($(this).attr('id')==id){
+   				var partLink = $(this).find('jsonpath').text();
+   				console.log(partLink);
+   				scene.remove(parts[4]);
+   				loadParts(partLink, 4 );    
+   				document.getElementById("pedal_name").innerHTML=$(this).find('name').text();  				  		
+   				document.getElementById("pedal_price").innerHTML="$"+$(this).find('price').text();  				  		
+   				document.getElementById("pedal_weight").innerHTML=$(this).find('weight').text()+" grams";  				  		
+   				partsPrice[4]=	parseInt($(this).find('price').text());
+   				partsWeight[4]=	parseInt($(this).find('weight').text());
+   				$("#pedallist").effect("highlight", {color: 'red'}, 1200);
+				$("#totalprice").effect("highlight", {color: 'red'}, 1200);
+				$("#totalweight").effect("highlight", {color: 'red'}, 1200);	
+   				sumup();		  		
+   			}
+   		}); }
+   		
+
+		if (parttype=="handle"){
+   		$(data).find('handle').each(function(){
+   			if($(this).attr('id')==id){
+   				var partLink = $(this).find('jsonpath').text();
+   				console.log(partLink);
+   				scene.remove(parts[5]);
+   				loadParts(partLink, 5 ); 
+   				document.getElementById("handle_name").innerHTML=$(this).find('name').text();  				  		
+   				document.getElementById("handle_price").innerHTML="$"+$(this).find('price').text();  				  		
+   				document.getElementById("handle_weight").innerHTML=$(this).find('weight').text()+" grams";  				  		
+   				partsPrice[5]=	parseInt($(this).find('price').text());
+   				partsWeight[5]=	parseInt($(this).find('weight').text());
+				$("#handlelist").effect("highlight", {color: 'red'}, 1200);
+				$("#totalprice").effect("highlight", {color: 'red'}, 1200);
+				$("#totalweight").effect("highlight", {color: 'red'}, 1200);
+
+   				sumup();
+   			}
+   		}); }
+
+		if (parttype=="saddle"){
+   		$(data).find('saddle').each(function(){
+   			if($(this).attr('id')==id){
+   				var partLink = $(this).find('jsonpath').text();
+   				console.log(partLink);
+   				scene.remove(parts[3]);
+   				loadParts(partLink, 3 ); 
+   				document.getElementById("seat_name").innerHTML=$(this).find('name').text();  				  		
+   				document.getElementById("seat_price").innerHTML="$"+$(this).find('price').text();  				  		
+   				document.getElementById("seat_weight").innerHTML=$(this).find('weight').text()+" grams";  				  		
+   				partsPrice[3]=	parseInt($(this).find('price').text());
+   				partsWeight[3]=	parseInt($(this).find('weight').text());
+   				$("#seatlist").effect("highlight", {color: 'red'}, 1200);
+				$("#totalprice").effect("highlight", {color: 'red'}, 1200);
+				$("#totalweight").effect("highlight", {color: 'red'}, 1200);
+   				sumup();
+   			}
+   		}); }
+		}
+	});
+}
+
+
+function loadDefaultModle(){
+
+	loadParts("parts/wheel01.js",1);
+	loadParts("parts/frame01.js",2);
+	loadParts("parts/seat01.js",3);
+	loadParts("parts/pedal01.js",4);
+	loadParts("parts/handle01.js",5);
+
+}
+
+      
+  function loadParts(file,number){   
+
+
+        
+  
+	loader.load(file, function ( geometry ) {
+		parts[number] = new THREE.Mesh(geometry, materials[number]);
+		parts[number].position.set(0,12,12);		
+		scene.add(parts[number]);
+		partsOn[number]=true; 
+		// enable shadows for an object
+      parts[number].castShadow = true;
+      parts[number].receiveShadow = true;
+  })
+  }
+  
+  
+  
+function animate(t) {
+        // spin the camera in a circle
+        camera.position.x = Math.sin(t/4000)*110;
+        camera.position.y = 30;
+        camera.position.z = Math.cos(t/4000)*110;
+        // you need to update lookAt every frame
+        camera.lookAt(scene.position);
+        // renderer automatically clears unless autoClear = false
+        renderer.render(scene, camera);
+        window.requestAnimationFrame(animate, renderer.domElement);
+      };
+
+animate(new Date().getTime());
+projector = new THREE.Projector();
+document.getElementById("canvas").addEventListener( 'mousedown', onDocumentMouseDown, false );
+
+function sumup(){
+var totalPrice,totalWeight;
+totalPrice=partsPrice[1]+partsPrice[2]+partsPrice[4]+partsPrice[5];
+totalWeight=partsWeight[1]+partsWeight[2]+partsWeight[4]+partsWeight[5];
+document.getElementById("totalprice").innerHTML=totalPrice;
+document.getElementById("totalweight").innerHTML=totalWeight;
+}
+
+
+
+				particleMaterial = new THREE.ParticleCanvasMaterial( {
+
+					color: 0x000000,
+					program: function ( context ) {
+
+						context.beginPath();
+						context.arc( 0, 0, 1, 0, PI2, true );
+						context.closePath()
+						context.fill();
+
+					}
+
+				} );
+				
+				
+				
+			function onDocumentMouseDown( event ) {
+ 				event.preventDefault();
+   				alert(event.clientY );
+   				var vector = new THREE.Vector3( ( (event.clientX-document.getElementById("config").innerWidth*20/100-5) / document.getElementById("canvas").innerWidth ) * 2 - 1, - ( (event.clientY-getElementById("metrics").innerHeight) / document.getElementById("canvas").innerHeight ) * 2 + 1, 0.5 );
+   				projector.unprojectVector( vector, camera );
+   
+   				var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
+   
+   				var intersects = ray.intersectObject(parts[1]);
+   
+   				if ( intersects.length > 0 ) {
+   					alert("111");
+   
+   					intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+   
+   					var particle = new THREE.Particle( particleMaterial );
+   					particle.position = intersects[ 0 ].point;
+   					particle.scale.x = particle.scale.y = 8;
+   					scene.add( particle );
+   
+   				}
+   
+   				/*
+   				// Parse all the faces
+   				for ( var i in intersects ) {
+   
+   					intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
+   
+   				}
+   				*/
+			}
+</script>
+
+
+<script>
+
+       $(document).ready(function(){
+        loadDefaultModle();
+              $('#config').find('p').each(function(){
+               //console.log($(this).text());
+               $(this).bind('click',function(){
+                       
+                       if($(this).next().hasClass('open')){
+                               $(this).next().slideUp();
+                               
+                       }else{
+                               $(this).next().slideDown();
+                       }
+                       $(this).next().toggleClass('open');
+               
+               });
+       });
+       
+               
+       });
+
+
+
+</script>
+</body>
+
+</html>

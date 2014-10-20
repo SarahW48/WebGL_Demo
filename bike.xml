@@ -1,0 +1,304 @@
+<parts>
+	<wheels>
+		<wheelsets>
+			<wheelset id="ws01">
+				<name>2012 Zipp 303 Firecrest Carbon Wheelset</name>
+				<jsonpath>parts/wheel01.js</jsonpath>
+				<imagepath>img/wheelset01.png</imagepath>
+				<price>2700</price>
+				<weight>1527</weight>
+				<grade></grade>
+			</wheelset>
+			<wheelset id="ws02">
+				<name>2012 Zipp Sub-9 Disc Wheel</name>
+				<jsonpath>parts/wheel02.js</jsonpath>
+				<imagepath>img/wheelset02.png</imagepath>
+				<price>2075</price>
+				<weight>1000</weight>
+				<grade></grade>
+			</wheelset>
+			<wheelset id="ws03">
+				<name>2011 Zipp 1080 Front Wheel - Tubular</name>
+				<jsonpath>parts/wheel03.js</jsonpath>
+				<imagepath>img/wheelset03.png</imagepath>
+				<price>972</price>
+				<weight>775</weight>
+				<grade></grade>
+			</wheelset>
+		</wheelsets>
+		<rims>
+			<rim id="rim01">
+				<name>2012 DT Swiss EX500 Rim</name>
+				<jsonpath>parts/rim.js</jsonpath>
+				<imagepath>img/rim01.png</imagepath>
+				<price>87.00</price>
+				<price2>82.00</price2>
+				<weight>510</weight>
+				<grade></grade>
+			</rim>
+			<rim id="rim02">
+				<name>2012 Mavic Open Pro Silver Rim</name>
+				<jsonpath>parts/rim.js</jsonpath>
+				<imagepath>img/rim02.png</imagepath>
+				<price>59.99</price>
+				<price2>66.50</price2>
+				<weight>440</weight>
+				<grade></grade>
+			</rim>
+			<rim id="rim03">
+				<name>2012 Mavic XM 819 Disc UST Rim</name>
+				<jsonpath>parts/rim.js</jsonpath>
+				<imagepath>img/rim03.png</imagepath>
+				<price>95.00</price>
+				<weight>507</weight>
+				<grade></grade>
+			</rim>
+			<rim id="rim04">
+				<name>2012 Stan's No Tubes ZTR Crest 29 Disc Rim</name>
+				<jsonpath>parts/rim.js</jsonpath>
+				<imagepath>img/rim04.png</imagepath>
+				<price>88.00</price>
+				<price2>83.00</price2>
+				<weight>390</weight>
+				<grade></grade>
+			</rim>
+		</rims>
+		<tires>
+			<tire id="tire01">
+				<name>2012 Vittoria Open Corsa Evo CX Tire - Clincher</name>
+				<jsonpath>parts/tire.js</jsonpath>
+				<imagepath>img/tire02.png</imagepath>
+				<price>75.00</price>
+				<weight>210</weight>
+				<grade></grade>
+			</tire>
+			<tire id="tire02">
+				<name>2012 Vittoria Open Corsa Evo SC Tire - Tubular</name>
+				<jsonpath>parts/tire.js</jsonpath>
+				<imagepath>img/tire02.png</imagepath>
+				<price>74.00</price>
+				<price2>70.00</price2>
+				<weight>220</weight>
+				<grade></grade>
+			</tire>
+			<tire id="tire03">
+				<name>2012 Vittoria Open Pavé Evo CG Clincher Tire</name>
+				<jsonpath>parts/tire.js</jsonpath>
+				<imagepath>img/tire03.png</imagepath>
+				<price>80.00</price>
+				<price2>76.00</price2>
+				<weight>215</weight>
+				<!--doesn't actually have a weight- I made it up -->
+				<grade></grade>
+			</tire>
+			<tire id="tire04">
+				<name>2012 Kenda Nevegal DTC Tire - 26in</name>
+				<jsonpath>parts/tire.js</jsonpath>
+				<imagepath>img/tire04.png</imagepath>
+				<price>52.99</price>
+				<price2>50.30</price2>
+				<weight>660</weight>
+				<grade></grade>
+			</tire>
+			<tire id="tire05">
+				<name>2012 Kenda Small Block 8 Tire - 26in</name>
+				<jsonpath>parts/tire.js</jsonpath>
+				<imagepath>img/tire05.js</imagepath>
+				<price>39.00</price>
+				<weight>390</weight>
+				<grade></grade>
+			</tire>
+		</tires>	
+		<tubes>
+			<tube id="tube01">
+				<name>2010 Michelin Aircomp Butyl Ultralight Tube - Road</name>
+				<jsonpath></jsonpath>
+				<imagepath>img/tube01.png</imagepath>
+				<price>5.37</price>
+				<weight>77</weight>
+				<grade></grade>
+			</tube>
+			<tube id="tube02">
+				<name>2011 Continental Mountain Bike Light Tube</name>
+				<jsonpath></jsonpath>
+				<imagepath>img/tube02.png</imagepath>
+				<price>9.00</price>
+				<weight>131</weight>
+				<grade></grade>
+			</tube>
+			<tube id="tube03">
+				<name>2012 Vittoria Latex Tube</name>
+				<jsonpath></jsonpath>
+				<imagepath>img/tube03.png</imagepath>
+				<price>12.71</price>
+				<weight>75</weight>
+				<grade></grade>
+			</tube>
+			<tube id="tube04">
+				<name>2012 Q-Tubes Cyclocross Tube</name>
+				<jsonpath></jsonpath>
+				<imagepath>img/tube04.png</imagepath>
+				<price>6.00</price>
+				<weight>125</weight>
+				<grade></grade>
+			</tube>
+		</tubes>
+		<hubs></hubs>			
+	</wheels>
+	<body>	
+		<frames>
+			<frame id="frame01">
+				<name>Orca Gold Electronic</name>
+				<jsonpath>parts/frame01.js</jsonpath>
+				<imagepath>img/frame03.png</imagepath>
+				<price>3999</price>
+				<sizes>
+					<size>48</size>
+					<size>51</size>
+					<size>53</size>
+					<size>55</size>
+					<size>57</size>
+					<size>60</size>
+				</sizes>
+				<colors>
+					<color>Orange</color>
+					<color>Blue</color>
+					<color>Silver</color>
+					<color>White</color>
+				</colors>
+				<weight>3000</weight>
+				<grade></grade>
+				<url>http://www.competitivecyclist.com/frame/
+					2012-orbea-orca-gold-electronic-road-frameset-10300.html</url>
+			</frame>
+			<frame id="frame02">
+				<name>Speedfox SF29/SRAM X0</name>
+				<jsonpath>parts/frame02.js</jsonpath>
+				<imagepath>img/frame02.png</imagepath>
+				<price>4499</price>
+				<sizes>
+					<size>S</size>
+					<size>M</size>
+					<size>L</size>
+				</sizes>
+				<colors>
+					<color>White</color>
+				</colors>
+				<weight>5500</weight>
+				<grade></grade>
+				<url>http://www.competitivecyclist.com/frame/
+					2012-bmc-speedfox-sf29---xo-build-kit-10723.html</url>
+			</frame>
+			<frame id="frame03">
+				<name>Orbea Orca Silver</name>
+				<jsonpath>parts/frame03.js</jsonpath>
+				<imagepath>img/frame01.png</imagepath>
+				<price>2599</price>
+				<sizes>
+					<size>48</size>
+					<size>51</size>
+					<size>53</size>
+					<size>55</size>
+					<size>57</size>
+					<size>60</size>
+				</sizes>
+				<colors>
+					<color>Carbon/Silver/Matte</color>
+					<color>White/Carbon/Silver</color>
+					<color>White/Red/Silver</color>
+					<color>White/Carbon/Green</color>
+				</colors>
+				<weight>5000</weight>
+				<grade></grade>
+				<url>http://www.competitivecyclist.com/frame/
+					2012-orbea-orca-silver-frameset-10303.html</url>
+			</frame>
+		</frames>
+		<saddles></saddles>
+		<seatposts></seatposts>
+	</body>
+	<handlebars>
+		<handles>
+			<handle id="handle01">
+				<name>2012 3T Rotundo Team Handlebar</name>
+				<jsonpath>parts/handle01.js</jsonpath>
+				<imagepath>img/handle01.png</imagepath>
+				<price>300</price>
+				<weight>210</weight>
+				<grade></grade>
+			</handle>
+			<handle id="handle02">
+				<name>2011 3T Brezza Team II Handlebar</name>
+				<jsonpath>parts/handle02.js</jsonpath>
+				<imagepath>img/handle02.png</imagepath>
+				<price>625</price>
+				<weight>527</weight>
+				<grade></grade>
+			</handle>
+			<handle id="handle03">
+				<name>2012 3T Extendo Limited Handlebar</name>
+				<jsonpath>parts/handle03.js</jsonpath>
+				<imagepath>img/handle03.png</imagepath>
+				<price>169</price>
+				<weight>186</weight>
+				<grade></grade>
+			</handle>
+		</handles>	
+	</handlebars>
+	<geartrain>
+		<pedals>
+			<pedal id="pedal01">
+				<name>2012 Speedplay X2 Road Pedals</name>
+				<jsonpath>parts/pedal02.js</jsonpath>
+				<imagepath>img/pedal01.png</imagepath>
+				<price>185</price>
+				<weight>197</weight>
+				<grade></grade>
+			</pedal>
+			<pedal id="pedal02">
+				<name>2012 Twenty6 Prerunner Cromo Pedal</name>
+				<jsonpath>parts/pedal01.js</jsonpath>
+				<imagepath>img/pedal02.png</imagepath>
+				<price>210</price>
+				<weight>303</weight>
+				<grade></grade>
+			</pedal>
+			<pedal id="pedal03">
+				<name>2012 Speedplay Frog Titanium Mountain Bike Pedal</name>
+				<jsonpath>parts/pedal03.js</jsonpath>
+				<imagepath>img/pedal03.png</imagepath>
+				<price>210</price>
+				<weight>250</weight>
+				<grade></grade>
+			</pedal>
+		</pedals>
+	</geartrain>
+	<saddles>
+		<saddle id="saddle01">
+				<name>2012 Fizik Antares 00 Carbon Braided Saddle</name>
+				<jsonpath>parts/seat01.js</jsonpath>
+				<imagepath>img/saddle01.png</imagepath>
+				<price>319</price>
+				<weight>138</weight>
+				<grade></grade>
+		</saddle>
+		<saddle id="saddle02">
+            <name>2012 Fizik Kurve Snake Saddle</name>
+				<jsonpath>parts/seat02.js</jsonpath>
+				<imagepath>img/saddle02.png</imagepath>
+				<price>280</price>
+				<weight>220</weight>
+				<grade></grade>
+		</saddle>
+		<saddle id="saddle03">
+            <name>2012 Selle Italia SLR Superflow Saddle</name>
+				<jsonpath>parts/seat03.js</jsonpath>
+				<imagepath>img/saddle03.png</imagepath>
+				<price>300</price>
+				<weight>190</weight>
+				<grade></grade>
+		</saddle>
+	</saddles>
+</parts>
+
+

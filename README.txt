@@ -1,0 +1,3 @@
+This website is what I built two years ago for a bike company called Competitive Cyclist.The company wants an online platform which could let their customers to personalize their bikes online. Instead of showing 2d images, they wants users to see the bike in 360 degrees 3d view. So I built it with WebGL library three.js. The website is build in two days 100% by me.
+
+Due to some compatibility problems, the website works better in FireFox and old version Chrome browser. 

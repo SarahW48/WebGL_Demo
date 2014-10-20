@@ -1,8 +1,0 @@
-
-CCDemo_Version9
--added the lasts models,
--effect for the configuration and total price and weight
--submenu cutting	
-
-version10
--added textures, info of parts, new models, new imgaes
